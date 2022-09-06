@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AppFox.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
+        x:Class="AppFox.Views.MainWindow"
+		x:Name="Main"
+        Icon="/Assets/avalonia-logo.ico"
+		Name="Main"
+        Title="AppFox"
+		Width="400" Height="200">
+	
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	<Window.KeyBindings>
+		<KeyBinding Gesture="Ctrl+P" Command="{Binding OnClickCommand}" />
+		<KeyBinding Gesture="Ctrl+L" Command="{Binding OnSecondCommand}" />
+	</Window.KeyBindings>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+		<TextBlock TextAlignment="Center" Text="Сделать скриншот Ctrl+P"/>
+		<TextBlock TextAlignment="Center" Text="Загрузить скриншоты за выбранный период Ctrl+L"/>
+		<StackPanel Orientation="Horizontal">
+			<TextBox Width="200" Text="{Binding StartDate}"></TextBox>
+			<TextBox Width="200" Text="{Binding EndDate}"></TextBox>
+		</StackPanel>
+		<TextBlock x:Name="ErrorText" Text="{Binding ErrorText}"/>
+	</StackPanel>
+
+</Window>
